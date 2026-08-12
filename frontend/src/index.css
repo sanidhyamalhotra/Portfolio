@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 5 5 5;
+        --foreground: 234 234 234;
+        --card: 15 15 15;
+        --card-foreground: 234 234 234;
+        --popover: 10 10 10;
+        --popover-foreground: 234 234 234;
+        --primary: 223 255 0;
+        --primary-foreground: 5 5 5;
+        --secondary: 26 26 26;
+        --secondary-foreground: 234 234 234;
+        --muted: 26 26 26;
+        --muted-foreground: 136 136 136;
+        --accent: 223 255 0;
+        --accent-foreground: 5 5 5;
+        --destructive: 255 59 48;
+        --destructive-foreground: 255 255 255;
+        --border: 35 35 35;
+        --input: 35 35 35;
+        --ring: 223 255 0;
+        --radius: 0rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'JetBrains Mono', monospace;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'Unbounded', sans-serif;
+    }
+}
+
+/* Grain / noise overlay */
+.grain-overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Custom text selection */
+::selection {
+    background: rgb(223 255 0);
+    color: rgb(5 5 5);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: rgb(5 5 5); }
+::-webkit-scrollbar-thumb { background: rgb(40 40 40); }
+::-webkit-scrollbar-thumb:hover { background: rgb(223 255 0); }
+
+/* Outline stroke text for marquee */
+.text-stroke {
+    -webkit-text-stroke: 1.5px rgb(223 255 0);
+    color: transparent;
+}
+.text-stroke-muted {
+    -webkit-text-stroke: 1.5px rgb(60 60 60);
+    color: transparent;
+}
+
+.mask-line {
+    overflow: hidden;
+    display: block;
+}
