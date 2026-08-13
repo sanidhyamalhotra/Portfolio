@@ -65,7 +65,7 @@ export default function Skills() {
             <p className="mb-8 text-xs font-bold uppercase tracking-[0.3em] text-primary">/ Certifications</p>
             {certifications.map((c) => (
               <motion.div
-                key={c}
+                key={c.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -73,7 +73,14 @@ export default function Skills() {
                 className="flex items-center gap-4 border-t border-border py-6"
               >
                 <span className="h-2 w-2 bg-primary" />
-                <span className="font-heading text-lg font-medium tracking-tight text-foreground">{c}</span>
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-heading text-lg font-medium tracking-tight text-foreground transition-colors hover:text-primary"
+                >
+                  {c.name}
+                </a>
               </motion.div>
             ))}
           </div>

@@ -8,7 +8,12 @@ import { toast } from "sonner";
 import { ArrowUpRight } from "lucide-react";
 import { profile, RESUME_URL } from "@/data/portfolio";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const FORMSPREE_RAW = (process.env.REACT_APP_FORMSPREE_ID || "").trim();
+const FORMSPREE_URL = (() => {
+  if (!FORMSPREE_RAW) return null;
+  if (FORMSPREE_RAW.startsWith("http")) return FORMSPREE_RAW.replace(/\/$/, "");
+  return `https://formspree.io/f/${FORMSPREE_RAW}`;
+})();
 const ease = [0.22, 1, 0.36, 1];
 
 const schema = z.object({
@@ -34,13 +39,44 @@ export default function Contact() {
   } = useForm({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data) => {
+    if (!FORMSPREE_URL) {
+      toast.error("Contact form is not configured yet.");
+      return;
+    }
+
     setSubmitting(true);
     try {
-      await axios.post(`${API}/contact`, data);
+      await axios.post(
+        FORMSPREE_URL,
+        {
+          name: data.name,
+          email: data.email,
+          subject: data.subject || "Portfolio inquiry",
+          message: data.message,
+          _replyto: data.email,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          timeout: 15000,
+        },
+      );
       toast.success("Message sent. I'll get back to you soon.");
       reset();
     } catch (e) {
-      toast.error("Something went wrong. Please try again.");
+      const status = e?.response?.status;
+      const detail =
+        e?.response?.data?.error ||
+        e?.response?.data?.errors?.[0]?.message ||
+        e?.message;
+      console.error("Formspree submit failed:", status, detail, e?.response?.data);
+      toast.error(
+        status === 404
+          ? "Form endpoint not found. Check REACT_APP_FORMSPREE_ID."
+          : "Something went wrong. Please try again.",
+      );
     } finally {
       setSubmitting(false);
     }

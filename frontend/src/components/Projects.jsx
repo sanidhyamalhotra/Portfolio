@@ -104,7 +104,7 @@ export default function Projects() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 className="font-heading text-4xl font-bold uppercase tracking-tight text-foreground md:text-5xl">
-            Selected Work
+            Selected Projects
           </h2>
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground">
             / {String(filtered.length).padStart(2, "0")} / {String(projects.length).padStart(2, "0")} Case Files

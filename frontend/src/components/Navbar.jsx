@@ -6,7 +6,7 @@ import { RESUME_URL } from "@/data/portfolio";
 const links = [
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
-  { label: "Work", id: "work" },
+  { label: "Projects", id: "work" },
   { label: "Skills", id: "skills" },
   { label: "Contact", id: "contact" },
 ];

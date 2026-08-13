@@ -11,7 +11,7 @@ export const profile = {
   phone: "(562) 336-3246",
   linkedin: "https://linkedin.com/in/sanidhya-malhotra/",
   github: "https://github.com/sanidhyamalhotra",
-  location: "Carson, California",
+  location: "Los Angeles, California",
 };
 
 export const manifesto = [
@@ -36,7 +36,7 @@ export const experience = [
   {
     role: "Research Assistant",
     company: "California State University, Dominguez Hills",
-    period: "2024 — Present",
+    period: "May 2025 — Present",
     location: "Carson, CA",
     points: [
       "Building immersive AR/VR educational applications in Unity (C#, XR Toolkit) with strong emphasis on physics simulation, VR interaction design and UX for STEM learning.",
@@ -49,7 +49,7 @@ export const experience = [
   {
     role: "Supplemental Instruction (SI) Leader",
     company: "TLTC — CSU Dominguez Hills",
-    period: "2024 — May 2026",
+    period: "September 2024 — May 2026",
     location: "Carson, CA",
     points: [
       "Led review sessions and delivered one-on-one and group tutoring in Statistics, Probability, Algebra, Geometry and Calculus.",
@@ -61,7 +61,7 @@ export const experience = [
   {
     role: "Treasurer & Event Manager",
     company: "CSUDH Cybersecurity Club",
-    period: "Jan 2025 — May 2026",
+    period: "January 2025 — May 2026",
     location: "Carson, CA",
     points: [
       "Managed club finances as Treasurer — tracked budgets, expenses, reimbursements and event spending with organised records.",
@@ -75,7 +75,7 @@ export const experience = [
   {
     role: "System Engineer",
     company: "Tata Consultancy Services",
-    period: "Aug 2021 — Aug 2024",
+    period: "August 2021 — August 2024",
     location: "Noida, India",
     points: [
       "Built and secured REST APIs with JWT authentication and OWASP-aligned protections across UI and backend layers of the MePC A.P. Moller logistics platform.",
@@ -88,7 +88,7 @@ export const experience = [
   {
     role: "Networking Engineering Intern",
     company: "Oil and Natural Gas Corporation (ONGC)",
-    period: "Jun 2021 — Jul 2021",
+    period: "June 2021 — July 2021",
     location: "New Delhi, India",
     points: [
       "Designed segmented network topologies in Cisco Packet Tracer with secure routing protocols.",
@@ -600,8 +600,14 @@ export const education = [
 ];
 
 export const certifications = [
-  "CompTIA Security+",
-  "ISC2 Certified in Cybersecurity (CC)",
+  {
+    name: "CompTIA Security+",
+    url: "https://www.credly.com/badges/1b034285-b1d4-43e7-9fd1-368fc2d29e15/public_url",
+  },
+  {
+    name: "ISC2 Certified in Cybersecurity (CC)",
+    url: "https://www.credly.com/badges/5d0ea0e7-4b80-420b-9ba9-b21c74ff7650/public_url",
+  },
 ];
 
 export const marqueeItems = [
